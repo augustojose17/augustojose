@@ -5,609 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Tienda Virtual</title>
     <link rel="stylesheet" href="Tienda Virtual/styles.css">
-	<style>
-		*{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-header {
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            background-color: black;
-            height: 90px;
-			z-index: 10;
-        }
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 20px;
-            padding-left: 5%;
-            padding-right: 5%;
-            font-weight: bold;
-        }
-        img.logo {
-            width: 100px;
-        }
-        ul li {
-            display: inline-block;
-            padding: 0px 20px;
-        }
-        a {
-            color: white;
-            text-decoration: none;
-        }
-        a:hover { 
-            color: aqua;
-        }
-        #carrito-contenedor {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 25%;
-            height: 100%;
-            background-color: #f8f9fa;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-            transform: translateX(100%);
-            transition: transform 0.5s ease-in-out;
-            overflow-y: auto;
-            padding: 20px;
-            box-sizing: border-box;
-            z-index: 1000;
-        }
-     
-#carrito-contenedor.mostrar {
-    transform: translateX(0);
-}
-
-
-@media (max-width: 1200px) {
-    #carrito-contenedor {
-        width: 30%;
-    }
-}
-
-@media (max-width: 768px) {
-    #carrito-contenedor {
-        width: 40%; 
-    }
-}
-
-@media (max-width: 480px) {
-    #carrito-contenedor {
-        width: 80%; 
-    }
-}
-
-
-
-        .product-image {
-            width: 5%;
-            float: left;
-            margin-right: 10px;
-        }
-        .cart-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        .cart-item img {
-            width: 60px;
-            height: auto;
-            margin-right: 10px;
-        }
-        .cart-item h4 {
-            margin: 0;
-            font-size: 1em;
-        }
-        .cart-item p {
-            margin: 5px 0;
-            font-size: 0.9em;
-        }
-        #cart h2 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        #total-price {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-top: 20px;
-            text-align: right;
-        }
-        .add-to-cart {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .add-to-cart:hover {
-            background-color: #0056b3;
-        }
-		
-
-  .contenedor-principal {
-    max-width: 100%;
-    background-image: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1));
-    margin: 0 auto;
-    text-align: center;
-	  
-}
-
-		
-  
-  .contenedor-imagen {
-    width: 420px; 
-    height: 420px; 
-    overflow: hidden; 
-    border: 1px solid #ccc;
-    display: inline-block; 
-    margin: 0 5px;
-	border-radius: 15px;
-	   position: relative;
-  }
-
-  
-  .imagen {
-    width: 100%; 
-    height: auto; 
-    transition: transform 1s;
-  }
-
- 
-  .imagen:hover {
-    transform: scale(1.2); 
-  }
-		
-	.texto {
-    position: absolute;
-    bottom: 20px; 
-    left: 50%;
-    transform: translateX(-50%); 
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.8); 
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.texto h2 {
-    margin-bottom: 10px;
-	color: white; 
-}
-
-.texto p {
-	color: white; 
-}
-
-.texto button {
-	
-   border: 1px solid white; 
-            background-color: transparent; 
-            color: transparent; 
-            padding: 10px 20px; 
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s; 
-	color: white;
-	
-}
-
-.texto button:hover {
-   background-color: white; 
-            color: black;
-}
-		
-	footer {
-    bottom: 0;
-    width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
-.add-to-cart {
-    background-color: #6200ea;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-}
-
-.add-to-cart:hover {
-    background-color: #3700b3;
-}
-
-#products {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1rem;
-    justify-content: space-between; 
-}
-
-.product {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 20px;
-    width: calc(100% / 6 - 20px); 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.product img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-
-@media (max-width: 1200px) {
-    .product {
-        width: calc(100% / 3 - 20px); 
-    }
-}
-
-@media (max-width: 768px) {
-    .product {
-        width: calc(100% / 2 - 20px);
-    }
-}
-
-@media (max-width: 480px) {
-    .product {
-        width: 100%; 
-    }
-}
-
-
-#cart {
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-#cart-items {
-    list-style: none;
-    padding: 0;
-}
-
-#cart-items li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.encabezadoimg {
-    width: 100%;
-    height: 500px;
-}
-
-
-
-
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    height: 1500px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h1 {
-    text-align: center;
-}
-
-p {
-    text-align: center;
-}
-
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 30px 100px; 
-}
-
-.card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin: 10px;
-    padding: 20px;
-    width: 100px;  
-    text-align: center;
-    box-sizing: border-box;
-    flex: 1 1 calc(30% - 40px); 
-}
-
-.icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
-
-
-h3 {
-    margin-bottom: 10px;
-}
-
-
-@media (max-width: 768px) {
-    .card {
-        flex: 1 1 calc(100% - 20px); 
-    }
-}
-
-
-@media (max-width: 480px) {
-    .card {
-        flex: 1 1 100%; 
-        max-width: 100%;
-    }
-}
-
-
-
-footer{
-    bottom: 0;
-    left: 0;
-    height: fit-content;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--dark);
-    color: white;
-    background-color: #121212;
-}
-
-.copyright-container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.copyright{
-    font-size: 12px;
-    opacity: 0.7;
-    font-weight: 400;
-    padding: 10px 0;
-}
-
-.footer-menus{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 40%;
-}
-
-.footer-container{
-    height: fit-content;
-    width: 100%;
-    padding: 3rem 6rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.footer-content-container{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-footer .website-logo{
-    margin-bottom: 1.2rem;
-    font-size: calc(1vw + 20px);
-}
-
-.footer-info, .menu-item-footer{
-    margin: 0.2rem 0;
-    opacity: 0.7;
-    color: white;
-    text-decoration: none;
-    transition: 0.5s;
-}
-
-.menu-item-footer:hover{
-    opacity: 1;
-}
-
-.menu-title{
-    font-size: var(--medium-text-font);
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-}
-
-.social-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    width: 100%;
-}
-
-.social-link{
-    height: 100%;
-    width: 30px;
-    background-image: url(FacebookBlanco.png);
-    background-size: 70%;
-    background-position: center;
-    margin-right: 1rem;
-    background-repeat: no-repeat;
-}
-
-.social-link:hover{
-    opacity: 0.7;
-}
-
-footer .social-link:nth-of-type(2){
-    background-image: url(TwitterBlanco.png);
-}
-
-footer .social-link:nth-of-type(3){
-    background-image: url(LinkedinBlanco.png);
-}
-
-
-/*MEDIA QUERY*/
-@media (max-width: 768px){
-    
-    .footer-container{
-        padding: 2rem;
-        flex-direction: column;
-    }
-
-    .footer-content-container{
-        width: 100%;
-        padding: 2rem 0;
-        border-bottom: 1px solid #2A2A2A;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .footer-content-container:nth-of-type(1){
-        align-items: flex-start;
-    }
-    .footer-content-container:nth-of-type(3){
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-
-    .footer-menus{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        border-bottom: 1px solid #2A2A2A;
-    }
-
-    .footer-menus .footer-content-container:nth-of-type(1){
-        width: 45%;
-        align-items: flex-start;
-        border-bottom: none;
-    }
-    .footer-menus .footer-content-container:nth-of-type(2){
-        width: 45%;
-        align-items: flex-start;
-        border-bottom: none;
-    }
-}
-
-	</style>
-<scripts>
-		document.addEventListener('DOMContentLoaded', () => {
-    const carritoLink = document.getElementById('carrito-link');
-    const carritoContenedor = document.getElementById('carrito-contenedor');
-    const cartItemsElement = document.getElementById('cart-items');
-    const totalPriceElement = document.getElementById('total-price');
-    let totalPrice = 0;
-    const cart = [];
-
-    // Mostrar/ocultar carrito
-    carritoLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        carritoContenedor.classList.toggle('mostrar');
-    });
-
-    // Manejar clic en botón "Añadir al carrito"
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', (event) => {
-            const productId = event.target.getAttribute('data-product-id');
-            const productName = event.target.getAttribute('data-product-name');
-            const productPrice = parseFloat(event.target.previousElementSibling.textContent.replace('Precio: L', '').replace(',', ''));
-            const productImage = document.querySelector(`#product${productId} img`).src;
-
-            addToCart(productId, productName, productPrice, productImage);
-        });
-    });
-
-    function addToCart(productId, productName, productPrice, productImage) {
-        // Comprobar si el producto ya está en el carrito
-        const existingItem = cart.find(item => item.id === productId);
-
-        if (existingItem) {
-            // Si el producto ya está en el carrito, aumentar su cantidad
-            existingItem.quantity++;
-        } else {
-            // Si es un nuevo producto, agregarlo al carrito
-            cart.push({
-                id: productId,
-                name: productName,
-                price: productPrice,
-                quantity: 1,
-                image: productImage
-            });
-        }
-
-        updateCart();
-    }
-
-    function updateCart() {
-        // Limpiar los elementos actuales del carrito
-        cartItemsElement.innerHTML = '';
-        totalPrice = 0;
-
-        cart.forEach(item => {
-            const cartItemContainer = document.createElement('div');
-            cartItemContainer.classList.add('cart-item-container');
-
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
-
-            const productImage = document.createElement('img');
-            productImage.src = item.image;
-            productImage.classList.add('product-image');
-            productImage.alt = item.name;
-
-            const itemDetails = document.createElement('div');
-
-            const itemName = document.createElement('h4');
-            itemName.textContent = `${item.name} x${item.quantity}`;
-
-            const itemPrice = document.createElement('p');
-            itemPrice.textContent = `Precio: L${(item.price * item.quantity).toFixed(2)}`;
-
-            itemDetails.appendChild(itemName);
-            itemDetails.appendChild(itemPrice);
-
-            cartItem.appendChild(productImage);
-            cartItem.appendChild(itemDetails);
-            cartItemContainer.appendChild(cartItem);
-
-            cartItemsElement.appendChild(cartItemContainer);
-
-            totalPrice += item.price * item.quantity;
-        });
-
-        totalPriceElement.textContent = `Total: L${totalPrice.toFixed(2)}`;
-    }
-});
-	</scripts>
 </head>
 <body>
     <header>
 		<nav>
-			<img src="Img/logopagtienda1.png" class="logo"/>
+			<img src="Tienda Virtual/Img/logopagtienda1.png" class="logo"/>
 			
 			<ul>
 				<li><a href="#">Inicio</a></li>
@@ -631,13 +33,13 @@ footer .social-link:nth-of-type(3){
 		<br>
 	<br>
 		<br>
-	<img class="encabezadoimg" src="Img/9e9cff93c41680c9869b7c9c7991a48ed28206a2_BANNER COMPUDEL 2.jpg">
+	<img class="encabezadoimg" src="Tienda Virtual/Img/9e9cff93c41680c9869b7c9c7991a48ed28206a2_BANNER COMPUDEL 2.jpg">
 		<br>
 		<br>
 		<h1 style="text-align: center">Nuevos Ingresos</h1>
         <section id="products">
             <div class="product" id="product1">
-                <img src="Img/NOTEBOOK-LENOVO-V15-G3-IAP-15.6-82TT00EALM.png" alt="Producto 1">
+                <img src="Tienda Virtual/Img/NOTEBOOK-LENOVO-V15-G3-IAP-15.6-82TT00EALM.png" alt="Producto 1">
                 <h3>Disponible</h3>
 				<p>Laptop Oficina Lenovo V15 G3 IAP 15.6″ FHD TN / Intel i3 1215U </p>
 				<br>
@@ -645,7 +47,7 @@ footer .social-link:nth-of-type(3){
                 <button class="add-to-cart" data-product-id="1" data-product-name="Laptop Oficina Lenovo V15">Añadir al carrito</button>
             </div>
             <div class="product" id="product2">
-                <img src="Img/82JW00Q5LM-LAPTOP-LENOVO-LEGION-5-15.6-FHD-IPS-AMD-RYZEN-7-5800H-3.2-4.4GHZ-16GB-DDR4-3200MHZ.png" alt="Producto 2">
+                <img src="Tienda Virtual/Img/82JW00Q5LM-LAPTOP-LENOVO-LEGION-5-15.6-FHD-IPS-AMD-RYZEN-7-5800H-3.2-4.4GHZ-16GB-DDR4-3200MHZ.png" alt="Producto 2">
 				<h3>Disponible</h3>
                 <p>LAPTOP LENOVO LEGION 5 RYZEN 7 5800H 15.6″ FULLHD</p>
 				<br>
@@ -653,7 +55,7 @@ footer .social-link:nth-of-type(3){
                 <button class="add-to-cart" data-product-id="2" data-product-name="LAPTOP LENOVO LEGION 5">Añadir al carrito</button>
             </div>
             <div class="product" id="product3">
-                <img src="Img/NOTEBOOK-ASUS-FX507ZC4-HN002-15.6-90NR0GW1-M001F0.png" alt="Producto 1">
+                <img src="Tienda Virtual/Img/NOTEBOOK-ASUS-FX507ZC4-HN002-15.6-90NR0GW1-M001F0.png" alt="Producto 1">
                 <h3>Disponible</h3>
 				<p>Laptop Avanzada ASUS TUF FX507ZC4-HN002 15.6″ FHD IPS</p>
 				<br>
@@ -661,7 +63,7 @@ footer .social-link:nth-of-type(3){
                 <button class="add-to-cart" data-product-id="3" data-product-name="Laptop Avanzada ASUS TUF FX507ZC4">Añadir al carrito</button>
             </div>
             <div class="product" id="product4">
-                <img src="Img/NOTEBOOK-ASUS-FA507RF-HN018-15.6-90NR0HA1-M003Y0.png" alt="Producto 2">
+                <img src="Tienda Virtual/Img/NOTEBOOK-ASUS-FA507RF-HN018-15.6-90NR0HA1-M003Y0.png" alt="Producto 2">
 				<h3>Disponible</h3>
                 <p>LAPTOP ASUS TUF GAMING FA506N A15 15″ FULL HD</p>
 				<br>
@@ -669,7 +71,7 @@ footer .social-link:nth-of-type(3){
                 <button class="add-to-cart" data-product-id="4" data-product-name="LAPTOP ASUS TUF GAMING A15"><a href="LpAsusTuf 506n.html">Añadir al carrito</a></button>
             </div>
 			<div class="product" id="product5">
-                <img src="Img/NOTEBOOK-ASUS-FA507RF-HN018-15.6-90NR0HA1-M003Y0.png" alt="Producto 1">
+                <img src="Tienda Virtual/Img/NOTEBOOK-ASUS-FA507RF-HN018-15.6-90NR0HA1-M003Y0.png" alt="Producto 1">
                 <h3>Disponible</h3>
 				<p>Laptop Avanzada ASUS TUF FA507RF-HN018 15.6″ FHD</p>
 				<br>
@@ -677,7 +79,7 @@ footer .social-link:nth-of-type(3){
                 <button class="add-to-cart" data-product-id="5" data-product-name="Laptop Avanzada ASUS TUF FA507RF">Añadir al carrito</button>
             </div>
             <div class="product" id="product6">
-                <img src="Img/RTX-4060-8gb-msi-ventus-x2-white.png">
+                <img src="Tienda Virtual/Img/RTX-4060-8gb-msi-ventus-x2-white.png">
 				<h3>Disponible</h3>
                 <p>TARJETA GRAFICA MSI RTX 4060 8GB WHITE VENTUS GDDR6 FANS</p>
 				<br>
@@ -687,7 +89,7 @@ footer .social-link:nth-of-type(3){
         </section>
 	<br>
 	<br>
-		<img src="Img/13529704640078713748.jpg" style="width: 100%">
+		<img src="Tienda Virtual/Img/13529704640078713748.jpg" style="width: 100%">
 		<br>
 		<br>
 		<br>
@@ -701,7 +103,7 @@ footer .social-link:nth-of-type(3){
 	<br>
 	<br>
 	<div class="contenedor-imagen">
-  	<img class="imagen" src="Img/IATRABAJO.jpg" alt="Imagen 1">
+  	<img class="imagen" src="Tienda Virtual/Img/IATRABAJO.jpg" alt="Imagen 1">
 		<div class="texto">
         <h2 style="font-family: 'Arial', sans-serif;">Oficina</h2>
         <p style="font-family: 'Arial', sans-serif;">Computadoras para uso estudiantes, oficina, Desarrollo Software</p>
@@ -711,7 +113,7 @@ footer .social-link:nth-of-type(3){
 
 	
 	<div class="contenedor-imagen">
-  	<img class="imagen" src="Img/clfg0a1qg0014mo085o2948no_1.jpg" alt="Imagen 2">
+  	<img class="imagen" src="Tienda Virtual/Img/clfg0a1qg0014mo085o2948no_1.jpg" alt="Imagen 2">
 		<div class="texto">
         <h2 style="font-family: 'Arial', sans-serif;">Gamer</h2>
         <p style="font-family: 'Arial', sans-serif;">Desde Jugar por Diversión con tus amigos a Streaming Profesional</p>
@@ -720,7 +122,7 @@ footer .social-link:nth-of-type(3){
 	</div>
 	<!-- Contenedor de la tercera imagen -->
 	<div class="contenedor-imagen">
-  	<img class="imagen" src="Img/OIG4.jpg" alt="Imagen 3">
+  	<img class="imagen" src="Tienda Virtual/Img/OIG4.jpg" alt="Imagen 3">
 		<div class="texto">
         <h2 style="font-family: 'Arial', sans-serif;">Productividad</h2>
         <p style="font-family: 'Arial', sans-serif;">Más rendimiento en CAD, Animación 3D, Renders y más</p>
