@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Tienda Virtual</title>
     <link rel="stylesheet" href="Tienda Virtual/styles.css">
+    <style>
+        .increase-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.increase-button:hover {
+    background-color: #0056b3;
+}
+
+.decrease-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.decrease-button:hover {
+    background-color: #c82333;
+}
+
+
+    </style>
 </head>
 <body>
     <header>
@@ -22,18 +57,23 @@
 		</nav>
 	</header>
 	<div id="carrito-contenedor" class="oculto">
+        <button id="boton-cerrar" class="boton-cerrar">X</button>
         <section id="cart">
             <h2>Carrito de Compras</h2>
             <ul id="cart-items"></ul>
             <p id="total-price">Total: $0.00</p>
         </section>
     </div>
+    
+    
+    
 	
 	<br>
 		<br>
 	<br>
 		<br>
-	<img class="encabezadoimg" src="Tienda Virtual/Img/9e9cff93c41680c9869b7c9c7991a48ed28206a2_BANNER COMPUDEL 2.jpg">
+        <br>
+	<img class="encabezadoimg" src="Tienda Virtual/Img/Mesa-de-trabajo-17.webp">
 		<br>
 		<br>
 		<h1 style="text-align: center">Nuevos Ingresos</h1>
@@ -203,6 +243,6 @@
         </div>
     </footer>
 
-     <script src="Tienda Virtual/scripts.js"></script>
+    <script src="Tienda Virtual/scripts.js"></script>
 </body>
 </html>
